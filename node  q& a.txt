@@ -1,0 +1,69 @@
+1.nodejs : is server side runtime js built in v8 chrome engine .it will allow js to run ouside the brower .
+it's used to build scalable relatime applications ,it follows asyncronous operation 
+event driven non blocking I/O model (more specifically we call it as )
+
+* require : this keyword has access to module (commonJS) library 
+it's same as ES7 modules in js but differ in syntax 
+
+* module.exports {}: if we keep anything inside we can access through the application 
+
+* built in modules are os,fs,http,path
+os is used to get uptime os.uptime(),os.type(),os.totalmem(),os.release()
+path : path.sep() platform seperator , path.join(),path.basename,path.resolve('__dirname',folder,path)
+fs: we can write this as syncronous and asyncronous way 
+in syncronous methods are readFileSync,writefileSync
+readFileSync('path of file','utf-8)  1st parameter is path and second is for encoding purpose 
+writeFileSync('path of file need to create',`Content need to write `,{flag:'a'}) for appending 3rd one 
+
+in asyncronous one writeFile and readFile 
+we have to pass callBack here 
+ * callback is function we can pass this as arguement within another function won't exectue at 
+that time will execute later for perticular task 
+nested /callback hell :passing bunch of callbacks inside the function it will create callback hell
+
+readFile('./content/first.txt','utf-8',(err,result)=>{
+    if(err){
+
+    }
+
+    const first = result;
+    readFile('./content/second.txt','utf-8',(err,result)=>{
+        if(err){
+
+        }
+        const second = result;
+        writeFile('./content/new file path','content',()=>{
+            
+        })
+    })
+})
+* .syncronous: time consuming process,node will read line by line bcs it's continous process
+suppose first line of code processes very long time it will for that to complete then goes to next line 
+ * .asyncronous:it won't block the process if it encounters and callbacks (web api event) 
+it will hand over to browser it resumes the execution of next tasks once done with that tasks 
+browser inform js to run the callback then it will execute 
+
+To manage the async operation here we use callbacks but in further to overcome nested callbacks 
+we use async,await and promises .
+
+* NPM : node package manager 
+with the help of this we could get dependencies,packages or modules will require to run project
+for ex: while pushing our code into github we won't copy node_modules as it has many packages in it 
+we just mention in readme file please install node module with the help of npm install 
+so that other developers could run 
+
+* more about npm
+npm --verion we could get version of npm 
+npm i packagename : to install it in our project
+npm i -g packagename : we can use this anywhere
+
+* package.json : it's a manifest file it has importent information about project/package 
+steps to create it 
+npm init = press enter to skip then 
+npm init -y (everything default ) here set flag as y then by default everything will set.
+
+* loadash is package it has _.flattenDeep method we would get array items in structured manner .
+
+
+
+

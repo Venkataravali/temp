@@ -1,0 +1,155 @@
+1.node js is server side js runtime built in v8 chrome engine used to build realtime ,scalable applications 
+it will follow event driven nonblocking I/O operation model 
+version : 18.14.2
+
+browser          node js
+DOM              no DOM
+no fs            fs
+ES6 modules      common js library
+interactive apps  server side apps
+
+how do we get node to evaluate our code we use REPL and CLI
+=>in the terminal we have to keep node it will welcome you to node environment 
+=>Then we can evaulate const name="john'
+we would get name and we terminate by using ctr C
+Globals:
+in node there is no window object bcs there is no browser ,if you are going to access the window your app will crash 
+there are globals anywhere from we can access 
+__dirname : path of current directroy 
+__file: current file 
+process : info about env where pgm needs to be executed 
+require : function to use modules (CommonJS)
+module : current file 
+
+module setup :
+modules : We can keep all code in file 
+but best practice to split into modules for better understanding and can debug easily .
+modules same like ES6 modules but diff in syntax .
+Modules =encapsulated code (only share minimum ) only share what we want 
+Every file in nodejs is module 
+It has CommonJS library 
+require it has access to module (commonJS)
+
+Whatever i am gonna dump in export {} can able to access within entire application .
+module.exports = {}
+we can access using require within anywhere in application 
+
+Alternative syntax :
+module.exports.items = [1,2,3,4]
+const person ={'bob'}
+module.exports.singlePerson = person 
+
+Mind granade : 
+const num1 = 5;
+const num2 = 6;
+
+const addValues = ()=>{
+    console.log(`tha sum is ${num1+num2}`)
+}
+addValues();
+by default node is sending or exports them 
+
+Built-in modules :
+Os
+path
+fs
+Http 
+util : to access the utility data
+stream : streaming data 
+
+OS module :is built in module we no need to use .'./os' like that 
+we can use os directly 
+const user = os.userInfo()
+console.log(user)
+os.type()
+os.releasemem()
+os.totalmem()
+os.uptime()
+
+Path module :
+path.sep //it's platform seperator 
+it will give /
+path.join('/content/',subfolder,test.text)
+path.basename(path.join('/content',subfolder,test.text))
+==> that above will give test.text base name 1st name 
+path.resolve('__dirname','/content/',subfolder,test.text)  = it will take sequential order 
+
+fs module :
+with the help of fs module we can interact with file system 
+
+asyncronously non blocking 
+and as well syncronously blocking 
+
+In syncrnous manner 
+ const{readFileSync,writeFileSync} = require('fs')
+
+ const first =readFileSync('./content/first.txt','utf-8')
+ const second = readFileSync('./content/second.txt'.'utf-8')
+
+ writeFileSync('./content/file1.txt',`files are ${first} and ${second}`,{flag:'a'})
+
+ In asyncrounous mannaer : have to pass callbacks like this 
+ const {readFile,writefile} = require('fs')
+ readFile('./content/firsttxt','utf-8',(err,res)=>{
+    if(err){
+        console.log(err)
+        return
+    }
+    const first = result ;
+    readFile('./conent/secondtxt','utf-8'(err,res)=>{
+        if(err){
+            console.log(err)
+            return
+        }
+        const second = rsult;
+        writeFile('./content/async.text',`Here are file content ${first} ${second}`,'utf-8',(err,result)=>{
+   if(err){
+    console.log(err)
+    return
+   }
+   console.log(result)
+        })
+    })
+ })
+
+ HTTP module:
+ need to get brief intro and bief explnation 
+ it helps to create web server (http module )
+ const http = require('http')
+ const server = http.createServer((req,res)=>{
+    req,incoming request =>client is requesting from web browser it has method action in it ,res 
+    response we are sending back 
+    res.write('')
+    res.end()
+ })
+ server.listen(5000)
+
+ web server it will listen on 5000 port so need to check in browser for port 5000
+ if(req.url === '/')
+ {
+    res.end(")
+ }
+ if(req.url === '/about')
+ {
+    res.end(")
+ }
+ default case comes here 
+
+ npm intro : node package manager enables to do 
+ we can use our code in others project 
+ we can use code developed by other developer 
+ we can get our own soultions 
+ here we find usefull utility functions ,libraries.
+ modules,dependencies,packages which require for runnning our application
+
+ Why we need package.json: If we install package it will store as dependency in package.json file
+lodash package have flattenDeep method so that we would get we can get sequential array
+
+Share code :
+Here we can get ans for why package.json is more important 
+when we share the code 
+
+
+
+
+
